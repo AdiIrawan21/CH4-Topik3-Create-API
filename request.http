@@ -1,0 +1,25 @@
+### Creating a resource
+POST http://localhost:3000/books
+
+Content-Type: application/json
+{
+    "title": "Programming",
+    "author": "Richard",
+    "published_year": 2019,
+    "is_available": false
+}
+###
+PUT http://localhost:3000/books/2
+
+Content-Type: application/json
+
+{
+    "title": "Programming with JavaScript",
+    "author": "Richard",
+    "published_year": 2020,
+    "is_available": true
+}
+
+
+### Updating a resource
+DELETE http://localhost:3000/books/1
