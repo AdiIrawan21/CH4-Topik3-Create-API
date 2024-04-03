@@ -1,0 +1,234 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "API Books",
+        "description": "Daftar API Books Latihan Chapter 4 Topik 3",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000/v1",
+            "description": "localhost"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Books",
+            "description": "CRUD Books"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Get all books",
+                "description": " ",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/books": {
+            "post": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Create Books",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "author": {
+                                        "type": "string"
+                                    },
+                                    "published_year": {
+                                        "type": "integer"
+                                    },
+                                    "is_available": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "required": [
+                                    "title",
+                                    "author",
+                                    "published_year",
+                                    "is_available"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "created books successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/books/{booksId}": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Get books by id",
+                "description": "",
+                "parameters": [
+                    {
+                        "required": true,
+                        "in": "path",
+                        "name": "booksId",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Books ID"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "404": {
+                        "description": "Data buku tidak tersedia"
+                    }
+                }
+            }
+        },
+        "/books/{id}": {
+            "delete": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Delete book by id",
+                "description": "Deletes a book based on its id.",
+                "parameters": [
+                    {
+                        "required": true,
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Book ID"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Book deleted successfully"
+                    },
+                    "404": {
+                        "description": "Book not found"
+                    }
+                }
+            }
+        },
+        "/books/{idBuku}": {
+            "put": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Update book by id",
+                "description": "Updates a book based on its id.",
+                "parameters": [
+                    {
+                        "required": true,
+                        "in": "path",
+                        "name": "idBuku",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Book ID"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "author": {
+                                        "type": "string"
+                                    },
+                                    "published_year": {
+                                        "type": "integer"
+                                    },
+                                    "is_available": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "required": [
+                                    "title",
+                                    "author",
+                                    "published_year",
+                                    "is_available"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Books updated successfully"
+                    },
+                    "404": {
+                        "description": "Books not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {
+            "Books": {
+                "title": "Books",
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "example": "Data Science"
+                    },
+                    "author": {
+                        "type": "string",
+                        "example": "Jenny"
+                    },
+                    "published_year": {
+                        "type": "integer",
+                        "example": 2019
+                    },
+                    "is_available": {
+                        "type": "boolean",
+                        "example": true
+                    }
+                }
+            }
+        }
+    }
+}

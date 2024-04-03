@@ -3,13 +3,12 @@ POST http://localhost:3000/books
 
 Content-Type: application/json
 {
-    "title": "Programming",
+    "title": "Data Engineer",
     "author": "Richard",
-    "published_year": 2019,
-    "is_available": false
+    "published_year": 2019
 }
 ###
-PUT http://localhost:3000/books/2
+PUT http://localhost:3000/v1/books/16
 
 Content-Type: application/json
 
@@ -22,4 +21,7 @@ Content-Type: application/json
 
 
 ### Updating a resource
-DELETE http://localhost:3000/books/1
+DELETE http://localhost:3000/v1/books/12
+
+### get books by id
+GET http://localhost:3000/v1/books/15
